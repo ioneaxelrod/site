@@ -1,39 +1,40 @@
 package server
 
-import "github.com/gin-gonic/gin"
+import (
+  "github.com/gin-gonic/gin"
+)
 
+// Server is the powerhouse of the cell
 type Server struct {
-  db  Database
+  db  interface{}
   router *gin.Engine
 }
 
+// New creates new Server for people
 func New() Server {
-  r := gin.Default()
-  	r.GET("/ping", func(c *gin.Context) {
-  		c.JSON(200, gin.H{
-  			"message": "pong",
-  		})
-  	})
   return Server{
-    router: r,
-    db: nil,
+    router: setUpRouter(),
+    db: connectToDB(),
   }
 }
 
-func setUpRouter() *gin.Engine {
-  return nil
-}
-
-func connectToDB()
-
-(s Server) func GetDB() Database {
-  return s.db
-}
-
-(s Server) func GetRouter() {
+// GetRouter rules
+func (s Server) GetRouter() *gin.Engine {
   return s.router
 }
 
-(s Server) func Run() {
+// Run gets the server running
+func (s Server) Run() {
   s.router.Run()
+}
+
+func setUpRouter() *gin.Engine {
+  r := gin.Default()
+  r.GET("/ping", ping)
+  r.GET("/", showHomePage)
+  return r
+}
+
+func connectToDB() interface{} {
+  return nil
 }

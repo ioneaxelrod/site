@@ -1,13 +1,12 @@
 package main
 
-import "github.com/gin-gonic/gin"
-import "server"
+import "github.com/ioneaxelrod/site/server"
 
 func main() {
-  Run()
+  run()
 }
 
-func Run() {
-  server.New()
-  server.Run()
+func run() {
+  s := server.New()
+  s.Run()
 }
