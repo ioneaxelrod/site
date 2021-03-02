@@ -15,4 +15,4 @@
 # vendor/
 
 # Main Binary
-main/main
+cmd/main
