@@ -5,11 +5,11 @@ import "github.com/gin-gonic/gin"
 func setUpRouter() *gin.Engine {
   r := gin.Default()
   r.GET("/ping", ping)
-  r.GET("/", showHomePage)
+  r.GET("/", homePage)
   return r
 }
 
-func showHomePage(c *gin.Context) {
+func homePage(c *gin.Context) {
     c.JSON(200, gin.H{
       "message": "poop",
     })
