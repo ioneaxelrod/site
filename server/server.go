@@ -28,13 +28,6 @@ func (s Server) Run() {
   s.router.Run()
 }
 
-func setUpRouter() *gin.Engine {
-  r := gin.Default()
-  r.GET("/ping", ping)
-  r.GET("/", showHomePage)
-  return r
-}
-
 func connectToDB() interface{} {
   return nil
 }
